@@ -1,7 +1,7 @@
 package com.unal.lizzard.service;
 
 import com.unal.lizzard.repository.UserRepository;
-import com.unal.lizzard.dto.UserRegistationDto;
+import com.unal.lizzard.web.dto.UserRegistrationDto;
 import org.springframework.stereotype.Service;
 import com.unal.lizzard.model.*;
 import java.util.Arrays;
@@ -15,9 +15,9 @@ public class UserServiceImpl  implements  UserService{
         this.userRepository= userRepository;
     }
     @Override
-    public User save(UserRegistationDto registationDto ){
-        User user = new User( registationDto.getFristName(),registationDto.getLastName(),registationDto.getEmail()
-        ,registationDto.getPassword(), Arrays.asList(new Role(name = "ROLE_USER")));
+    public User save(UserRegistrationDto registrationDto ){
+        User user = new User( registrationDto.getFirstName(),registrationDto.getLastName(),registrationDto.getEmail()
+        ,registrationDto.getPassword(), Arrays.asList(new Role("ROLE_USER")));
 
         return userRepository.save(user);
     }
